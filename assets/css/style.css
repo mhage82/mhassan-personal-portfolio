@@ -2011,3 +2011,20 @@ textarea.form-input::-webkit-resizer { display: none; }
 .timeline-text li + li {
   margin-top: 0.4rem;
 }
+/* Keep the complete profile avatar visible on narrow screens. */
+@media (max-width: 579px) {
+  .avatar-box {
+    flex: 0 0 80px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+  }
+
+  .avatar-box img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    object-position: center;
+  }
+}
