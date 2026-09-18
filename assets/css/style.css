@@ -1880,3 +1880,134 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+@media (min-width: 1024px) {
+
+  /*
+   * Give the primary content a useful laptop width instead of relying
+   * on width: max-content.
+   */
+  .main-content {
+    width: min(950px, calc(100vw - 48px));
+    max-width: 950px;
+  }
+
+  article {
+    width: 100%;
+  }
+
+  /*
+   * Text-only portfolio cards need more horizontal room.
+   * Override the template's three-column laptop grid.
+   */
+  .project-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+  }
+
+  .project-item,
+  .project-item .content-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .project-item .content-card {
+    height: 100%;
+    padding: 25px;
+    cursor: default;
+  }
+
+  .project-item .project-title {
+    margin-left: 0;
+    margin-bottom: 12px;
+  }
+
+  .project-item .timeline-text,
+  .project-item .project-title {
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+}
+
+/*
+ * Use the side-by-side layout only when there is sufficient room
+ * for both the sidebar and content.
+ */
+@media (min-width: 1250px) {
+
+  main {
+    width: min(1200px, calc(100vw - 48px));
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: start;
+    gap: 25px;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  article {
+    width: 100%;
+    max-width: none;
+  }
+
+  .info-content .name {
+    white-space: normal;
+  }
+
+  .info-content .title {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .project-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Three columns only on genuinely wide displays. */
+@media (min-width: 1600px) {
+
+  main {
+    width: min(1400px, calc(100vw - 64px));
+    max-width: 1400px;
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .project-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Visible keyboard focus without changing layout dimensions */
+.navbar-link:focus-visible,
+.info_more-btn:focus-visible,
+.contact-link:focus-visible,
+.about-text a:focus-visible {
+  outline: 3px solid var(--orange-yellow-crayola);
+  outline-offset: 3px;
+}
+
+/* Restore bullets removed by the template's global list reset */
+.timeline-text ul {
+  padding-left: 1.25rem;
+}
+
+.timeline-text li {
+  list-style: disc;
+}
+
+.timeline-text li + li {
+  margin-top: 0.4rem;
+}
